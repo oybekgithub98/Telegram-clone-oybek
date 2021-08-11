@@ -1,27 +1,38 @@
 [
     {
-        "id": 1,
-        "username": "Soginboyev Oybek",
-        "lastMessage": "key={productItem}",
+        "id": 0,
+        "username": "Eldorbek oxunov",
+        "lastMessage": "hello bro",
+        "time": "online",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbnxlR6bxMYeS7ilYQI1A9FfBfybDCKCoWbw&usqp=CAU"
     },
     {
+        "id": 1,
+        "username": "Soginboyev Oybek",
+        "lastMessage": "key={productItem}",
+        "time": "online",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbnxlR6bxMYeS7ilYQI1A9FfBfybDCKCoWbw&usqp=CAU"
+    },
+     {
         "id": 2,
         "username": "Eldorbek oxunov",
         "lastMessage": "hello bro",
+        "time": "last seen yesterday at 19:52",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
     },
     {
         "id": 3,
         "username": "Gulomjonov Shohruzbek",
         "lastMessage": "please install",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
+        "time": "last seen recently",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbnxlR6bxMYeS7ilYQI1A9FfBfybDCKCoWbw&usqp=CAU"
     },
     {
         "id": 4,
         "username": "Soginboyev Oybek",
         "lastMessage": "key={productItem}",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbnxlR6bxMYeS7ilYQI1A9FfBfybDCKCoWbw&usqp=CAU"
+        "time": "last seen yesterday at 23:52",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
     },
     {
         "id": 5,
@@ -94,5 +105,23 @@
         "username": "Gulomjonov Shohruzbek",
         "lastMessage": "please install",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
+    },
+    {  
+        "id": 17,
+        "username": "Eldorbek oxunov",
+        "lastMessage": "hello bro",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
+    },
+    {
+        "id": 18,
+        "username": "Gulomjonov Shohruzbek",
+        "lastMessage": "please install",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_iqGNdD4GH3TF01wwe0LgIwgwl7pODjSEg&usqp=CAU"
+    },
+    {
+        "id": 19,
+        "username": "Soginboyev Oybek",
+        "lastMessage": "key={productItem}",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbnxlR6bxMYeS7ilYQI1A9FfBfybDCKCoWbw&usqp=CAU"
     }
 ]

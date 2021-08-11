@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../sidebar/Sidebar.css';
-import Personal from '../components/personal/Personal';
+// import Personal from '../components/personal/Personal';
 import { FiEdit2, FiMenu, FiSearch, FiArrowLeft } from 'react-icons/fi';
 import searchResult from '../SEARCH_RESULTS.json';
 // import { BiAdjust } from "react-icons/bi";
@@ -19,14 +19,16 @@ import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import TranslateIcon from '@material-ui/icons/Translate';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-import {Link} from 'react-router-dom';
-import jsonParams from '../SEARCH_RESULTS.json';
+// import {Link} from 'react-router-dom';
+// import jsonParams from '../SEARCH_RESULTS.json';
+import MessagePrompt from '../components/messagePrompt/MessagePrompt';
 
 function Sidebar() {
     const [isFocused, setIsFocused] = useState(false);
     const [isOpenMenu, setisOpenMenu] = useState(false);
     const [darkMode, setDarkmode] = useState(false);
     const [oybek, setOybek] = useState(false);
+    const [message, setMessage] = useState(false);
 
     
 
@@ -138,7 +140,18 @@ function Sidebar() {
         const chat_settings = document.querySelector('.chat_settings');
         chat_settings.classList.remove('activeChats');
     }
-
+    
+    const newChannel = (e) => {
+        const message_P = document.querySelector('.message_P');
+        if (!message) {
+            message_P.classList.add('activeMessage');
+            setMessage(true);
+        } else {
+            message_P.classList.remove('activeMessage');
+            setMessage(false);
+        }
+    }
+    
     return (
         <div className="sidebar" >
             <div className="sidebar__navigation">
@@ -190,23 +203,23 @@ function Sidebar() {
                 }
             </div>
             <div className="sidebar__chats">
-                {
+                {/* {
                     jsonParams.map(chatInfo =>
-                    (
-                        <Link key={chatInfo.id} to={`/${chatInfo.id}`}>
-                            <Personal
-                            username={chatInfo.username}
-                            lastMessage={chatInfo.lastMessage}
-                            image={chatInfo.image}
-                            />
-                        </Link>
+                        (
+                            <Link key={chatInfo.id} to={`/${chatInfo.id}`}>
+                                <Personal
+                                    username={chatInfo.username}
+                                    lastMessage={chatInfo.lastMessage}
+                                    image={chatInfo.image}
+                                />
+                            </Link>
+                        )
                     )
-                    )
-                }
+                } */}
             </div>
             <div className="new__chatOptions">
                 <ul className="new__chatCollection">
-                    <li>New Channel</li>
+                    <li onClick={newChannel}>New Channel</li>
                     <li>New Group</li>
                     <li>New Secret Chat</li>
                 </ul>
@@ -214,6 +227,9 @@ function Sidebar() {
             <button className="new" onClick={handleNewMessage} onBlur={handleNewMessageHide}>
                 <FiEdit2 />
             </button>
+            <div className="message_P">
+                <MessagePrompt />
+            </div>
         </div>
     )
 }

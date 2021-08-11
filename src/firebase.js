@@ -4,13 +4,13 @@ import 'firebase/firestore';
 
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyCTtFcfmjruk2lKsvSjg7lBLrs4eabBzu4",
-  authDomain: "telegram-ee34a.firebaseapp.com",
-  projectId: "telegram-ee34a",
-  storageBucket: "telegram-ee34a.appspot.com",
-  messagingSenderId: "358424046591",
-  appId: "1:358424046591:web:ad49b0d3d018b41da795ca",
-  measurementId: "G-P25LVBT6HS"
+  apiKey: "AIzaSyCkLGfRhe-j1_117_ax_z5mhHNcJVVgCLA",
+  authDomain: "telegramchat-5712b.firebaseapp.com",
+  projectId: "telegramchat-5712b",
+  storageBucket: "telegramchat-5712b.appspot.com",
+  messagingSenderId: "1018928398694",
+  appId: "1:1018928398694:web:63c531b776ff07819188a7",
+  measurementId: "G-8EEWJNFY0Y"
 });
 
 const auth = app.auth();

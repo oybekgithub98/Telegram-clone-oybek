@@ -32,3 +32,8 @@
     font-weight: 400;
     color: gray;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}

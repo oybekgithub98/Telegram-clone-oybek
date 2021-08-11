@@ -10,9 +10,10 @@ import Chat from '../chat/Chat';
 import { Link } from 'react-router-dom';
 // import Sidebar from '../../sidebar/Sidebar';
 import SidebarData from '../../SEARCH_RESULTS.json';
+// import { Detector } from "react-detect-offline";
 // import ProfileSidebar from '../profileSidebar/ProfileSidebar';
 
-const MessageSender = ({ match }) => {
+const MessageSender = ({ match, callbac }) => {
 
     // console.log()
 
@@ -45,7 +46,7 @@ const MessageSender = ({ match }) => {
             setMoreMute(false);
         }
     }
-
+    
     const profileSenderHand = (e) => {
         const profileSidebar = document.querySelector('.profileSidebar');
         const moreVertical = document.querySelector('.moreVertical');
@@ -61,6 +62,7 @@ const MessageSender = ({ match }) => {
             setVertMore(false);
         }
     }
+
     const profileSenderHide = (e) => {
         const profileSidebar = document.querySelector('.profileSidebar');
         if (sideberProfile) {
@@ -80,18 +82,26 @@ const MessageSender = ({ match }) => {
         <div className="Sender">
             <div className="messageSender">
                 <div className="messageHeader">
-                    <div className="messageHeaderAvatar" style={{ backgroundImage: `url(${SidebarData[Math.floor(match?.params.userId)]?.image ? SidebarData[Math.floor(match?.params.userId)]?.image : SidebarData[0]?.image})` }} onClick={profileSenderHand}>
-
+                    <div className="messageHeaderAvatar" style={{
+                        backgroundImage:
+                            `url(${SidebarData[Math.floor(match?.params.userId)]?.image ? SidebarData[Math.floor(match?.params.userId)]?.image : SidebarData[0]?.image})`
+                    }} onClick={profileSenderHand}>
                     </div>
                     <div className="messageHeaderInfo" onClick={profileSenderHand}>
                         <p className="chatNameInfo">
                             {
                                 SidebarData[Math.floor(match?.params.userId)]?.username ?
-                                SidebarData[Math.floor(match?.params.userId)]?.username : 
-                                SidebarData[0]?.username  
+                                    SidebarData[Math.floor(match?.params.userId)]?.username :
+                                    SidebarData[0]?.username
                             }
                         </p>
-                        <p className="chatMemberInfo">140 members</p>
+                        <p className="chatMemberInfo">
+                            {
+                                SidebarData[Math.floor(match?.params.userId)]?.time ?
+                                    SidebarData[Math.floor(match?.params.userId)]?.time :
+                                    SidebarData[0]?.time
+                            }
+                        </p>
                     </div>
                     <div className="messageHeaderMore">
                         <button type="button" onClick={moreVert}>
@@ -151,7 +161,25 @@ const MessageSender = ({ match }) => {
                     </div>
                 </div>
                 <div className="profileSidebar_body" >
-                    <img src={SidebarData[Math.floor(match?.params.userId)]?.image ? SidebarData[Math.floor(match?.params.userId)]?.image : SidebarData[0]?.image} alt="images" />
+                    <div className="body_image" style={{
+                        backgroundImage:
+                            `url(${SidebarData[Math.floor(match?.params.userId)]?.image ? SidebarData[Math.floor(match?.params.userId)]?.image : SidebarData[0]?.image})`
+                    }} >
+                        <p>
+                            {
+                                SidebarData[Math.floor(match?.params.userId)]?.username ?
+                                    SidebarData[Math.floor(match?.params.userId)]?.username :
+                                    SidebarData[0]?.username
+                            }
+                        </p>
+                        <p>
+                            {
+                                SidebarData[Math.floor(match?.params.userId)]?.time ?
+                                    SidebarData[Math.floor(match?.params.userId)]?.time :
+                                    SidebarData[0]?.time
+                            }
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

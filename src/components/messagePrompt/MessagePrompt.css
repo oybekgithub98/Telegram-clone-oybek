@@ -1,0 +1,13 @@
+.prompt {
+    background-color: red;
+    width: 400px;
+    height: 250px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 200px;
+    z-index: 35;
+}
