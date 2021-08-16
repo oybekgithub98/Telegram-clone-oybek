@@ -2,13 +2,13 @@ import React from 'react';
 import '../personal/Personal.css';
 
 
-function Personal({username, lastMessage, image}) {
+function Personal({gruppaNomi, image}) {
     return (
         <div className="personal">
             <div style={{backgroundImage: `url(${image})`}} className="profile_image"></div>
             <div className="message__detail">
-                <p>{username}</p>
-                <p>{lastMessage}</p>
+                <p>{gruppaNomi}</p>
+                {/* <p>{lastMessage}</p> */}
             </div>
         </div>
     )

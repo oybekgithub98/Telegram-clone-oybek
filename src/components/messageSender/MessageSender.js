@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../messageSender/MessageSender.css';
 import { FiMoreVertical, FiPaperclip, FiSmile, FiSend, FiMic, FiEdit2 } from 'react-icons/fi';
 import CloseIcon from '@material-ui/icons/Close';
@@ -10,6 +10,7 @@ import Chat from '../chat/Chat';
 import { Link } from 'react-router-dom';
 // import Sidebar from '../../sidebar/Sidebar';
 import SidebarData from '../../SEARCH_RESULTS.json';
+import { db } from '../../firebase';
 // import { Detector } from "react-detect-offline";
 // import ProfileSidebar from '../profileSidebar/ProfileSidebar';
 
@@ -22,8 +23,25 @@ const MessageSender = ({ match, callbac }) => {
     const [moreMute, setMoreMute] = useState(false);
     const [sideberProfile, setSideberProfile] = useState(false);
     const [chatMessage, setChatMessage] = useState("");
+    const [chatName, setChatName] = useState({});
+
+    useEffect(() => {
+        db.collection("groups")
+            .doc(match?.params.userId)
+            .onSnapshot((comingData) =>
+                setChatName(
+                    {
+                        name: comingData?.data()?.groupName,
+                        image: comingData?.data()?.groupImage
+                    }
+                )
+            )
+    }, [match])
+    // console.log(chatName)
+    // console.log(match)
 
     const moreVert = (e) => {
+
         const moreVertical = document.querySelector('.moreVertical');
         const messageHeaderMore = document.querySelector('.messageHeaderMore');
 
@@ -46,7 +64,7 @@ const MessageSender = ({ match, callbac }) => {
             setMoreMute(false);
         }
     }
-    
+
     const profileSenderHand = (e) => {
         const profileSidebar = document.querySelector('.profileSidebar');
         const moreVertical = document.querySelector('.moreVertical');
@@ -84,15 +102,13 @@ const MessageSender = ({ match, callbac }) => {
                 <div className="messageHeader">
                     <div className="messageHeaderAvatar" style={{
                         backgroundImage:
-                            `url(${SidebarData[Math.floor(match?.params.userId)]?.image ? SidebarData[Math.floor(match?.params.userId)]?.image : SidebarData[0]?.image})`
+                            `url(${chatName?.image})`
                     }} onClick={profileSenderHand}>
                     </div>
                     <div className="messageHeaderInfo" onClick={profileSenderHand}>
                         <p className="chatNameInfo">
                             {
-                                SidebarData[Math.floor(match?.params.userId)]?.username ?
-                                    SidebarData[Math.floor(match?.params.userId)]?.username :
-                                    SidebarData[0]?.username
+                                chatName?.name
                             }
                         </p>
                         <p className="chatMemberInfo">
@@ -167,9 +183,7 @@ const MessageSender = ({ match, callbac }) => {
                     }} >
                         <p>
                             {
-                                SidebarData[Math.floor(match?.params.userId)]?.username ?
-                                    SidebarData[Math.floor(match?.params.userId)]?.username :
-                                    SidebarData[0]?.username
+                                chatName?.name
                             }
                         </p>
                         <p>

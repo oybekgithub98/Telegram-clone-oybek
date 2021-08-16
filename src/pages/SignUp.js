@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useStateValue } from "../StateProvider";
@@ -20,10 +20,12 @@ const SignUp = () => {
                     type: "REGISTER_USER",
                     user: auth
                 })
+                db.collection("gruppa").add({
+                    groupName: user.user.email
+                })
                 if (user) {
                     history.push("/0")
                 }
-
             })
             .catch((err) => {
                 errorAlert.innerHTML = err.message;

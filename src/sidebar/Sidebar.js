@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../sidebar/Sidebar.css';
-// import Personal from '../components/personal/Personal';
+import Personal from '../components/personal/Personal';
 import { FiEdit2, FiMenu, FiSearch, FiArrowLeft } from 'react-icons/fi';
 import searchResult from '../SEARCH_RESULTS.json';
 // import { BiAdjust } from "react-icons/bi";
@@ -19,9 +19,10 @@ import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
 import TranslateIcon from '@material-ui/icons/Translate';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // import jsonParams from '../SEARCH_RESULTS.json';
 import MessagePrompt from '../components/messagePrompt/MessagePrompt';
+import { db } from '../firebase';
 
 function Sidebar() {
     const [isFocused, setIsFocused] = useState(false);
@@ -29,6 +30,7 @@ function Sidebar() {
     const [darkMode, setDarkmode] = useState(false);
     const [oybek, setOybek] = useState(false);
     const [message, setMessage] = useState(false);
+    const [chats, setChats] = useState([]);
 
     
 
@@ -128,8 +130,17 @@ function Sidebar() {
             darkModeIcon.style.backgroundColor = 'slateblue';
             setDarkmode(true)
         }
-    }, [darkMode]);
 
+        db.collection("groups").onSnapshot((chats) => 
+            setChats(
+                chats?.docs.map((chatData) => ({
+                    uniqueId: chatData.id,
+                    data: chatData.data()
+                }))
+            )
+        )
+
+    }, [darkMode]);
 
     const chatSet = (e) => {
         const chat_settings = document.querySelector('.chat_settings');
@@ -203,19 +214,18 @@ function Sidebar() {
                 }
             </div>
             <div className="sidebar__chats">
-                {/* {
-                    jsonParams.map(chatInfo =>
+                {
+                    chats?.map(gruppa =>
                         (
-                            <Link key={chatInfo.id} to={`/${chatInfo.id}`}>
+                            <Link key={gruppa.uniqueId} to={`/${gruppa.uniqueId}`}>
                                 <Personal
-                                    username={chatInfo.username}
-                                    lastMessage={chatInfo.lastMessage}
-                                    image={chatInfo.image}
+                                    gruppaNomi={gruppa?.data.groupName}
+                                    image={gruppa?.data.groupImage}
                                 />
                             </Link>
                         )
                     )
-                } */}
+                }
             </div>
             <div className="new__chatOptions">
                 <ul className="new__chatCollection">

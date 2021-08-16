@@ -307,14 +307,14 @@
     background-color: rgb(218, 218, 218);
 }
 
-.lightmode>.sidebar__navigation .hamburger__menu:hover {
+.lightmode > .sidebar__navigation > .hamburger__menu:hover {
     background-color: rgb(241, 239, 239);
     height: 40px;
     width: 40px;
     transition: 0.4s;
 }
 
-.lightmode>.sidebar__navigation>.search__bar {
+.lightmode > .sidebar__navigation> .search__bar {
     background-color: #fff;
     border: 1px solid rgba(199, 199, 199, 0.733);
 }
